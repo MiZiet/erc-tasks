@@ -2,6 +2,7 @@ import {useQuery} from "@tanstack/react-query";
 import {fetchNFTs, type NFT} from "./api/nfts.ts";
 import {Collection} from "./components/Collection.tsx";
 import {useEffect, useState} from "react";
+import {Footer} from "./components/Footer.tsx";
 
 function App() {
   const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
@@ -22,8 +23,11 @@ function App() {
   }
 
   return (
-    <div className='max-w-[1280px] mx-auto '>
-      <Collection collection={data.filter(nft => nft.id !== selectedNFT?.id)}/>
+    <div>
+      <div className='max-w-[1280px] mx-auto '>
+        <Collection collection={data.filter(nft => nft.id !== selectedNFT?.id)}/>
+      </div>
+      <Footer/>
     </div>
   )
 }
