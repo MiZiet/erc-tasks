@@ -1,8 +1,10 @@
+import { useAccount } from "wagmi";
 import type { NFT } from "../api/nfts.ts";
 import ETHIcon from "../assets/icons/ETH-icon.svg?react";
 import FavouriteIcon from "../assets/icons/favourite-icon.svg?react";
 import UploadIcon from "../assets/icons/upload-icon.svg?react";
 import { useClaim } from "../hooks/UseClaim.tsx";
+import { useNFTBalance } from "../hooks/useNFTBalance.ts";
 import { PrimaryButton } from "./PrimaryButton.tsx";
 import { SecondaryButton } from "./SecondaryButton.tsx";
 
@@ -12,6 +14,12 @@ interface Props {
 
 export function NFTInfo({ nft }: Props) {
 	const { claim: handleClaim } = useClaim(nft);
+	const { address } = useAccount();
+	const { balance } = useNFTBalance(
+		nft.tokenAddress as `0x${string}`,
+		address,
+		nft.id,
+	);
 
 	return (
 		<>
@@ -21,7 +29,7 @@ export function NFTInfo({ nft }: Props) {
 						<p className="text-title-big text-black font-semibold">
 							{nft.metadata.name}
 						</p>
-						<p className="text-text text-grey font-normal">You own 0</p>
+						<p className="text-text text-grey font-normal">You own {balance}</p>
 					</div>
 					<div className="flex gap-2">
 						<SecondaryButton icon={FavouriteIcon} />
