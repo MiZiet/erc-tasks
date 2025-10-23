@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { Toaster } from "sonner";
 import { fetchNFTs, type NFT } from "./api/nfts.ts";
 import { Collection } from "./components/Collection.tsx";
 import { Footer } from "./components/Footer.tsx";
@@ -29,6 +30,7 @@ function App() {
 
 	return (
 		<div>
+			<Toaster richColors />
 			<Header />
 			<main className="max-w-[1248px] mx-auto my-20 flex flex-col gap-12">
 				<div className="flex gap-8 w-full pb-6">
