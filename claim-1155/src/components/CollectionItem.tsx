@@ -1,4 +1,4 @@
-import type { NFT } from "../api/nfts";
+import type { NFT } from "../types/NFT.ts";
 import { getIPFSUrl } from "../utils/getIPFSUrl.ts";
 
 interface Props {

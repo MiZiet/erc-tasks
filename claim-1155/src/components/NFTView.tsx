@@ -1,9 +1,9 @@
-import type { NFT } from "../api/nfts.ts";
 import InstagramIcon from "../assets/icons/instagram-icon.svg?react";
 import OpenIcon from "../assets/icons/open-icon.svg?react";
 import VerificationBadgeIcon from "../assets/icons/verification-badge-icon.svg?react";
 import XIcon from "../assets/icons/x-icon.svg?react";
 import KilnLogo from "../assets/kiln-logo.svg?react";
+import type { NFT } from "../types/NFT.ts";
 import { getIPFSUrl } from "../utils/getIPFSUrl.ts";
 import { IconLabel } from "./IconLabel.tsx";
 import { PrimaryButton } from "./PrimaryButton.tsx";

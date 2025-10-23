@@ -7,7 +7,8 @@ import {
 	useWriteContract,
 } from "wagmi";
 import abiJson from "../abis/erc1155.json";
-import type { NFT } from "../api/nfts.ts";
+
+import type { NFT } from "../types/NFT.ts";
 
 const MAX_UINT256 =
 	115792089237316195423570985008687907853269984665640564039457584007913129639935n;
@@ -50,7 +51,7 @@ export function useClaim(nft: NFT) {
 
 		try {
 			await writeContractAsync({
-				address: nft.tokenAddress as `0x${string}`,
+				address: nft.tokenAddress,
 				abi,
 				functionName: "claim",
 				args: [

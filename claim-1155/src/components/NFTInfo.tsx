@@ -1,10 +1,10 @@
 import { useAccount } from "wagmi";
-import type { NFT } from "../api/nfts.ts";
 import ETHIcon from "../assets/icons/ETH-icon.svg?react";
 import FavouriteIcon from "../assets/icons/favourite-icon.svg?react";
 import UploadIcon from "../assets/icons/upload-icon.svg?react";
-import { useClaim } from "../hooks/UseClaim.tsx";
+import { useClaim } from "../hooks/useClaim.ts";
 import { useNFTBalance } from "../hooks/useNFTBalance.ts";
+import type { NFT } from "../types/NFT.ts";
 import { PrimaryButton } from "./PrimaryButton.tsx";
 import { SecondaryButton } from "./SecondaryButton.tsx";
 
@@ -15,11 +15,7 @@ interface Props {
 export function NFTInfo({ nft }: Props) {
 	const { claim: handleClaim } = useClaim(nft);
 	const { address } = useAccount();
-	const { balance } = useNFTBalance(
-		nft.tokenAddress as `0x${string}`,
-		address,
-		nft.id,
-	);
+	const { balance } = useNFTBalance(nft.tokenAddress, address, nft.id);
 
 	return (
 		<>

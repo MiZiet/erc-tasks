@@ -1,19 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
-import { fetchNFTs, type NFT } from "./api/nfts.ts";
 import { Collection } from "./components/Collection.tsx";
 import { Footer } from "./components/Footer.tsx";
 import { Header } from "./components/Header.tsx";
 import { NFTInfo } from "./components/NFTInfo.tsx";
 import { NFTView } from "./components/NFTView.tsx";
+import { useGetNFTs } from "./hooks/useGetNFTs.ts";
+import type { NFT } from "./types/NFT.ts";
 
 function App() {
 	const [selectedNFT, setSelectedNFT] = useState<NFT | null>(null);
-	const { data, error, isLoading } = useQuery({
-		queryFn: fetchNFTs,
-		queryKey: ["nfts"],
-	});
+	const { data, error, isLoading } = useGetNFTs();
 
 	useEffect(() => {
 		if (!data) return;
@@ -25,7 +22,7 @@ function App() {
 	}
 
 	if (error) {
-		return "An error occurred: " + error.message;
+		return "An error occurred: " + error.message + ". Please reload the page.";
 	}
 
 	return (
