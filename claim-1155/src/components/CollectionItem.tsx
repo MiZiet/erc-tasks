@@ -3,11 +3,12 @@ import { getIPFSUrl } from "../utils/getIPFSUrl.ts";
 
 interface Props {
 	nft: NFT;
+	onClick: () => void;
 }
 
-export function CollectionItem({ nft }: Props) {
+export function CollectionItem({ nft, onClick }: Props) {
 	return (
-		<div className="flex flex-col gap-2">
+		<div className="flex flex-col gap-2 cursor-pointer" onClick={onClick}>
 			<img
 				src={getIPFSUrl(nft.metadata.image)}
 				alt={nft.metadata.name}

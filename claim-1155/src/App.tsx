@@ -37,6 +37,7 @@ function App() {
 				</div>
 				<Collection
 					collection={data.filter((nft) => nft.id !== selectedNFT?.id)}
+					onNFTClick={setSelectedNFT}
 				/>
 			</main>
 			<Footer />
