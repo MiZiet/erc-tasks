@@ -7,7 +7,15 @@
 
 # dependencies
 node_modules/
+dependencies/
 
 #build
-dist
+dist/
+out/
 
+#cache
+cache/
+
+#smart contract local deployments
+deployments/
+broadcast/

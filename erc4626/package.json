@@ -1,0 +1,19 @@
+{
+  "name": "erc4626",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.0",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "viem": "^2.38.4"
+  },
+  "scripts": {
+    "lint": "biome lint"
+  }
+}
