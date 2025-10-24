@@ -1,5 +1,10 @@
 # Steps to follow to run local node for e2e tests
 
+## Requirements
+
+Forge and Anvil installed. Follow instructions from foundry
+book: https://book.getfoundry.sh/getting-started/installation
+
 ## Install dependencies
 
 ```shell
