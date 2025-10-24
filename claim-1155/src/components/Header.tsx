@@ -10,7 +10,7 @@ export function Header() {
 	const { isConnected, address } = useAccount();
 
 	return (
-		<div className="flex justify-between px-6 py-5">
+		<div className="flex justify-between px-6 py-5 mx-auto max-w-[1440px]">
 			<OpenIcon />
 			<PrimaryButton
 				label={
