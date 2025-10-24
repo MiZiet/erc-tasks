@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useAccount } from "wagmi";
 import ETHIcon from "../assets/icons/ETH-icon.svg?react";
 import FavouriteIcon from "../assets/icons/favourite-icon.svg?react";
@@ -13,9 +14,17 @@ interface Props {
 }
 
 export function NFTInfo({ nft }: Props) {
-	const { claim: handleClaim } = useClaim(nft);
+	const { claim } = useClaim(nft);
 	const { address } = useAccount();
 	const { balance } = useNFTBalance(nft.tokenAddress, address, nft.id);
+
+	const handleClaim = async () => {
+		if (!address) {
+			toast.error("Please connect your wallet to claim the NFT.");
+		} else {
+			await claim();
+		}
+	};
 
 	return (
 		<>

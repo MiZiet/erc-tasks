@@ -50,6 +50,7 @@ export function useClaim(nft: NFT) {
 		};
 
 		try {
+			toast.info("Transaction awaits approval!");
 			await writeContractAsync({
 				address: nft.tokenAddress,
 				abi,
