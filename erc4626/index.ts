@@ -1,6 +1,6 @@
 import {encodeFunctionData, type PublicClient} from "viem";
-import ERC20Abi from './abis/ERC20.json' assert {type: 'json'}
-import ERC4626Abi from './abis/ERC4626.json' assert {type: 'json'}
+import ERC20Abi from './abis/ERC20.json' with { type: "json" };
+import ERC4626Abi from './abis/ERC4626.json' with { type: "json" };
 import {estimateGas} from "viem/actions";
 
 export type DepositParams = {

@@ -1,11 +1,9 @@
-import {describe, it, beforeAll, expect, beforeEach} from "bun:test";
-import {createPublicClient, createWalletClient, defineChain, http, type WalletClient} from "viem";
+import {beforeAll, beforeEach, describe, expect, it} from "bun:test";
+import {createPublicClient, createWalletClient, defineChain, http, parseUnits, type WalletClient} from "viem";
 import {privateKeyToAccount} from "viem/accounts";
-import deployments from "../smart-contracts/deployments/anvil.json" assert {type: 'json'}
+import deployments from "../smart-contracts/deployments/anvil.json" with {type: "json"}
 import {AmountExceedsMaxDepositError, deposit, MissingAllowanceError, NotEnoughBalanceError} from "./index.ts";
-import {parseUnits} from "viem";
-import ERC20Abi from './abis/ERC20.json' assert {type: 'json'}
-import ERC4626Abi from './abis/ERC4626.json' assert {type: 'json'}
+import ERC20Abi from './abis/ERC20.json' with {type: 'json'}
 import {waitForTransactionReceipt} from "viem/actions";
 
 const MAX_DEPOSIT = parseUnits("500", 18); // as set in the Vault deployment
