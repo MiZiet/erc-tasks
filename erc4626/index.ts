@@ -1,7 +1,7 @@
-import {encodeFunctionData, type PublicClient} from "viem";
-import ERC20Abi from './abis/ERC20.json' with { type: "json" };
-import ERC4626Abi from './abis/ERC4626.json' with { type: "json" };
-import {estimateGas} from "viem/actions";
+import { encodeFunctionData, type PublicClient } from "viem";
+import ERC20Abi from "./abis/ERC20.json" with { type: "json" };
+import ERC4626Abi from "./abis/ERC4626.json" with { type: "json" };
+import { estimateGas } from "viem/actions";
 
 export type DepositParams = {
   wallet: `0x${string}`;
@@ -44,64 +44,64 @@ export class AmountExceedsMaxDepositError extends Error {
  */
 export async function deposit(
   client: PublicClient,
-  {wallet, vault, amount}: DepositParams,
+  { wallet, vault, amount }: DepositParams,
 ): Promise<Transaction> {
   const tokenAddress = await client.readContract({
     address: vault,
     abi: ERC4626Abi.abi,
-    functionName: 'asset',
-  })
+    functionName: "asset",
+  });
 
-  const erc20Balance = await client.readContract({
+  const erc20Balance = (await client.readContract({
     address: tokenAddress as `0x${string}`,
     abi: ERC20Abi.abi,
-    functionName: 'balanceOf',
+    functionName: "balanceOf",
     args: [wallet],
-  }) as bigint
+  })) as bigint;
 
-  if ( erc20Balance < amount ) {
+  if (erc20Balance < amount) {
     throw new NotEnoughBalanceError();
   }
 
-  const allowance = await client.readContract({
+  const allowance = (await client.readContract({
     address: tokenAddress as `0x${string}`,
     abi: ERC20Abi.abi,
-    functionName: 'allowance',
+    functionName: "allowance",
     args: [wallet, vault],
-  }) as bigint
+  })) as bigint;
 
-  if ( allowance < amount ) {
+  if (allowance < amount) {
     throw new MissingAllowanceError();
   }
 
-  const maxDeposit = await client.readContract({
+  const maxDeposit = (await client.readContract({
     address: vault,
     abi: ERC4626Abi.abi,
-    functionName: 'maxDeposit',
+    functionName: "maxDeposit",
     args: [wallet],
-  }) as bigint
+  })) as bigint;
 
-  if ( amount > maxDeposit ) {
+  if (amount > maxDeposit) {
     throw new AmountExceedsMaxDepositError();
   }
   const data = encodeFunctionData({
     abi: ERC4626Abi.abi,
-    functionName: 'deposit',
+    functionName: "deposit",
     args: [amount, wallet],
-  })
+  });
 
   const gas = await estimateGas(client, {
     value: 0n,
     data,
     to: vault,
-    account: wallet
-  })
+    account: wallet,
+  });
 
   return {
     data,
     from: wallet,
     to: vault,
     value: 0n,
-    gas
-  }
+    gas,
+  };
 }
