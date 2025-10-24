@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import type { Abi } from "viem";
 import {
@@ -21,22 +21,23 @@ export function useClaim(nft: NFT) {
 	});
 
 	useEffect(() => {
-		if (data) {
-			switch (transactionStatus) {
-				case "pending":
-					toast.info("Transaction pending...");
-					break;
-				case "success":
-					toast.success("Transaction successful!");
-					break;
-				case "error":
-					toast.error("Transaction failed!");
-					break;
-			}
+		if (!data) {
+			return;
+		}
+		switch (transactionStatus) {
+			case "pending":
+				toast.info("Transaction pending...");
+				break;
+			case "success":
+				toast.success("Transaction successful!");
+				break;
+			case "error":
+				toast.error("Transaction failed!");
+				break;
 		}
 	}, [transactionStatus, data]);
 
-	async function claim() {
+	const claim = useCallback(async () => {
 		const abi = abiJson as Abi;
 		const tokenId = nft.id;
 		const quantity = 1n;
@@ -69,7 +70,7 @@ export function useClaim(nft: NFT) {
 		} catch {
 			toast.error("Transaction not executed!");
 		}
-	}
+	}, [nft.id, nft.tokenAddress, writeContractAsync, address]);
 
 	return { claim };
 }
