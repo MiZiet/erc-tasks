@@ -21,7 +21,7 @@ export function NFTView({ nft }: Props) {
 				alt={nft.metadata.name}
 				className="w-[608px] h-[608px]"
 			/>
-			<div className="border-1 border-secondary-border flex flex-col gap-6 p-6">
+			<div className="border-1 border-primary-border flex flex-col gap-6 p-6">
 				<div className="flex gap-4 items-center">
 					<div className="relative">
 						<KilnLogo />
@@ -29,10 +29,10 @@ export function NFTView({ nft }: Props) {
 					</div>
 					<div className="flex flex-col">
 						<p className="text-black font-semibold">KILN</p>
-						<p className="text-text text-grey">@Kiln</p>
+						<p className="text-medium text-grey">@Kiln</p>
 					</div>
 				</div>
-				<p className="text-text text-grey">
+				<p className="text-medium text-grey">
 					Hundreds of companies use Kiln to earn rewards on their digital
 					assets, or to whitelabel earning functionality into their products.
 				</p>

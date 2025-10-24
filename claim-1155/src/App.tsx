@@ -17,12 +17,12 @@ function App() {
 		setSelectedNFT(data[0]);
 	}, [data]);
 
-	if (isLoading || !data || !selectedNFT) {
+	if (isLoading) {
 		return "Loading...";
 	}
 
-	if (error) {
-		return "An error occurred: " + error.message + ". Please reload the page.";
+	if (error || !data || !selectedNFT) {
+		return "An unknown error occurred. Please reload the page.";
 	}
 
 	return (

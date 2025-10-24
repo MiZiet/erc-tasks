@@ -34,7 +34,9 @@ export function NFTInfo({ nft }: Props) {
 						<p className="text-title-big text-black font-semibold">
 							{nft.metadata.name}
 						</p>
-						<p className="text-text text-grey font-normal">You own {balance}</p>
+						<p className="text-medium text-grey font-normal">
+							You own {balance}
+						</p>
 					</div>
 					<div className="flex gap-2">
 						<SecondaryButton icon={FavouriteIcon} />
@@ -48,23 +50,23 @@ export function NFTInfo({ nft }: Props) {
 					{nft.metadata.attributes.map((attribute) => {
 						return (
 							<div
-								className="border-1 border-secondary-border p-[17px] w-[195px]"
+								className="border-1 border-primary-border p-[17px] w-[195px]"
 								key={attribute.trait_type}
 							>
-								<div className="text-text-small text-grey uppercase">
+								<div className="text-small text-grey uppercase">
 									{attribute.trait_type}
 								</div>
-								<div className="text-text-small text-black pt-1">
+								<div className="text-small text-black pt-1">
 									{attribute.value}
 								</div>
 							</div>
 						);
 					})}
 				</div>
-				<div className="h-px bg-secondary-border w-full"></div>
+				<div className="h-px bg-primary-border w-full"></div>
 				<div className="flex flex-col gap-2">
 					<div className="flex">
-						<div className="bg-button-primary py-[3px] px-[9px] font-medium text-text-primary text-text-small flex-none">
+						<div className="bg-button-primary py-[3px] px-[9px] font-medium text-text-primary text-small flex-none">
 							Free mint
 						</div>
 					</div>

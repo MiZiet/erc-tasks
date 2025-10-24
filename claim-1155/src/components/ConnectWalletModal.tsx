@@ -34,7 +34,7 @@ export const ConnectWalletModal = ({
 					</Dialog.Title>
 					{isConnected ? (
 						<>
-							<p className="text-text text-grey mb-4 truncate">{address}</p>
+							<p className="text-medium text-grey mb-4 truncate">{address}</p>
 							<PrimaryButton
 								onClick={() => {
 									disconnect();

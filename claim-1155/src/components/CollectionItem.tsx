@@ -18,7 +18,7 @@ export function CollectionItem({ nft, onClick }: Props) {
 				<div className="font-semibold text-title-small text-black">
 					{nft.metadata.name}
 				</div>
-				<div className="text-text text-grey">0.0 ETH</div>
+				<div className="text-medium text-grey">0.0 ETH</div>
 			</div>
 		</div>
 	);
