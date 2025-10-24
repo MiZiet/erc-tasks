@@ -15,7 +15,7 @@ interface Props {
 
 export function NFTView({ nft }: Props) {
 	return (
-		<div className="flex flex-col gap-6 w-1/2">
+		<div className="flex flex-col gap-6 w-full md:w-1/2">
 			<img
 				src={getIPFSUrl(nft.metadata.image)}
 				alt={nft.metadata.name}

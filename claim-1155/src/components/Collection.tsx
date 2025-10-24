@@ -12,7 +12,7 @@ export function Collection({ collection, onNFTClick }: Props) {
 			<h2 className="font-semibold text-title text-black">
 				More from this collection
 			</h2>
-			<div className="flex gap-4">
+			<div className="flex flex-col md:flex-row gap-4 mx-auto">
 				{collection.map((nft) => (
 					<CollectionItem
 						nft={nft}

@@ -28,7 +28,7 @@ export function NFTInfo({ nft }: Props) {
 
 	return (
 		<>
-			<div className="flex flex-col w-1/2 gap-6">
+			<div className="flex flex-col w-full md:w-1/2 gap-6">
 				<div className="flex justify-between">
 					<div>
 						<p className="text-title-big text-black font-semibold">
